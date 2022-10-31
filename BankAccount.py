@@ -1,9 +1,9 @@
 class BankAccount:
-    def __init__(self, full_name, account_number):
+    def __init__(self, full_name, account_number, account_type):
         self.full_name = full_name.title()
         self.account_number = account_number
         self.balance = 0
-        # self.account_type = account_type  
+        self.account_type = account_type  
 
     def deposit(self, amount):
         self.balance = self.balance + amount
@@ -31,8 +31,12 @@ class BankAccount:
         return self.balance
 
     def add_interest(self):
-        interest = float(self.balance) * 0.00083
-        self.balance = float(self.balance)+ interest
+        if self.account_type.lower() == "checking":
+            interest = float(self.balance) * 0.00083
+            self.balance = float(self.balance) + interest
+        elif self.account_type.lower() == "savings":
+            interest = float(self.balance) * 0.001
+            self.balance = float(self.balance) + interest
     
     # Updated the name to titlel case using .title()
     # A string is a list in python so to call all the numbers from the last 4th element in the list. I called the -4 index to the last element in the string.
@@ -42,10 +46,12 @@ class BankAccount:
         print(f"{self.full_name}\nAccount No.: {truncated_account_number}\nBalance: ${self.balance_format}")
 
 
-parul_account = BankAccount('parul Bhardwaj', '45678912')
-ivan_account = BankAccount('ivan dubey', '56712311')
-danielle_account = BankAccount('Danielle Roxberry', '12369349')
-mitchell_account = BankAccount('Mitchell hudson', '03141592')
+parul_account = BankAccount('parul Bhardwaj', '45678912', "savings")
+ivan_account = BankAccount('ivan dubey', '56712311', "savings")
+danielle_account = BankAccount('Danielle Roxberry', '12369349', "Checking")
+mitchell_account = BankAccount('Mitchell hudson', '03141592', "savings")
+
+bank = [parul_account, ivan_account, danielle_account, mitchell_account]
 
 parul_account.get_balance()
 parul_account.add_interest()
