@@ -50,7 +50,7 @@ class BankAccount:
             interest = float(self.balance) * 0.001
             self.balance = float(self.balance) + interest
     
-    # ---------------------------Add interest--------------------------  
+    # ---------------------------Print statement--------------------------  
     # Updated the name to titlel case using .title()
     # A string is a list in python so to call all the numbers from the last 4th element in the list. I called the -4 index to the last element in the string.
     def print_statement(self):
