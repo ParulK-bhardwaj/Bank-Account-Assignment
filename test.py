@@ -5,12 +5,11 @@ class BankAccount:
         self.balance = balance
         self.account_type = account_type  
 
-    # "%.2f" to get two digits after 2 decimals. round function was only giving one zero after decimal for the amount that were whole number. 
     def deposit(self, amount):
         self.balance = self.balance + amount
         self.balance_format = "%.2f" % float(self.balance)
         amount = "%.2f" % float(amount)
-        print(f"Amount deposited: ${amount} New Balance: ${self.balance_format}")
+        print(f"Amount deposited: ${amount} New Balance: ${self.balance_format}.")
         
     def withdraw(self, amount):
         if amount > self.balance:
@@ -19,16 +18,16 @@ class BankAccount:
             self.balance = self.balance - overdraft_fee
             self.balance_format = "%.2f" % float(self.balance)
             overdraft_fee_format = "%.2f" % float(overdraft_fee)
-            print(f"Overdraft fee: ${overdraft_fee_format} New Balance: ${self.balance_format}")
+            print(f"Overdraft fee: ${overdraft_fee_format} New Balance: ${self.balance_format} ")
         else:
             self.balance = self.balance - amount
             self.balance_format = "%.2f" % float(self.balance)
             amount = "%.2f" % float(amount)
-            print(f"Amount withdrawn: ${amount} New Balance: ${self.balance_format}")
+            print(f"Amount withdrawn: ${amount} New Balance: ${self.balance_format}.")
     
     def get_balance(self):
         self.balance_format = "%.2f" % float(self.balance)
-        print(f"Your Account Balance is ${self.balance_format}")
+        print(f"Your Account Balance is ${self.balance_format}.")
         return self.balance
 
     def add_interest(self):
@@ -44,24 +43,15 @@ class BankAccount:
     def print_statement(self):
         truncated_account_number = "*" * (len(self.account_number)-4) + self.account_number[-4:]
         self.balance_format = "%.2f" % float(self.balance)
-        print(f"{self.full_name}\nAccount No.: {truncated_account_number}\nAccount Type: {(self.account_type).title()}\nBalance: ${self.balance_format}")
+        print(f"{self.full_name}\nAccount No.: {truncated_account_number}\nBalance: ${self.balance_format}")
 
 
 parul_account = BankAccount('parul Bhardwaj', '45678912', 4000, "savings")
-ivan_account = BankAccount('ivan dubey', '56712311', 10000, "savings")
-danielle_account = BankAccount('Danielle Roxberry', '12369349', 100000, "Checking")
-mitchell_account = BankAccount('Mitchell hudson', '03141592', 10, "savings")
+ivan_account = BankAccount('ivan dubey', '56712311', 2000, "savings")
+danielle_account = BankAccount('Danielle Roxberry', '12369349', 200, "Checking")
+mitchell_account = BankAccount('Mitchell hudson', '03141592', 100, "savings")
 
 bank = [parul_account, ivan_account, danielle_account, mitchell_account]
-
-# Looping through bank list to add_interest to each account
-# Decided to add account.print_statement to the method, can easily be removed and truned into new function if needed.
-def bank_add_interest(bank):
-    for account in bank:
-        account.add_interest()
-        account.print_statement()
-        print("")
-
 
 parul_account.get_balance()
 parul_account.add_interest()
@@ -78,6 +68,3 @@ mitchell_account.print_statement()
 print("\nMoney Withdrawn")
 mitchell_account.withdraw(150)
 mitchell_account.print_statement()
-
-# add_interest Loop for Bank list
-bank_add_interest(bank)
