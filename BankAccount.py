@@ -1,17 +1,26 @@
+# Import random module for random number generation
+import random
+
 class BankAccount:
-    def __init__(self, full_name, account_number, balance, account_type):
+    # routing number was not part of github requirement so did not add it here
+    # https://github.com/Tech-at-DU/ACS-1111-Object-Oriented-Programming/blob/master/Lessons/bank_account.md
+    # It can be easily added as <def __init__(self, full_name, routing_number = 123456789, account_type):> if needed
+    def __init__(self, full_name, account_type):
         self.full_name = full_name.title()
-        self.account_number = account_number
-        self.balance = balance
+        # generate 8 digit account number through random - added functionality based on rubric
+        self.account_number = str(random.randint(10000000, 99999999))
+        self.balance = 0
         self.account_type = account_type 
 
+    # ---------------------------Deposit---------------------------
     # "%.2f" to get two digits after 2 decimals. round function was only giving one zero after decimal for the amount that were whole number. 
     def deposit(self, amount):
         self.balance = self.balance + amount
         self.balance_format = "%.2f" % float(self.balance)
         amount = "%.2f" % float(amount)
         print(f"Amount deposited: ${amount} New Balance: ${self.balance_format}")
-        
+
+     # ---------------------------Withdraw---------------------------   
     def withdraw(self, amount):
         if amount > self.balance:
             print("Insufficient funds.")
@@ -26,11 +35,13 @@ class BankAccount:
             amount = "%.2f" % float(amount)
             print(f"Amount withdrawn: ${amount} New Balance: ${self.balance_format}")
     
+    # ---------------------------Get Balance---------------------------  
     def get_balance(self):
         self.balance_format = "%.2f" % float(self.balance)
         print(f"Your Account Balance is ${self.balance_format}")
         return self.balance
 
+    # ---------------------------Add interest--------------------------  
     def add_interest(self):
         if self.account_type.lower() == "checking":
             interest = float(self.balance) * 0.00083
@@ -39,6 +50,7 @@ class BankAccount:
             interest = float(self.balance) * 0.001
             self.balance = float(self.balance) + interest
     
+    # ---------------------------Add interest--------------------------  
     # Updated the name to titlel case using .title()
     # A string is a list in python so to call all the numbers from the last 4th element in the list. I called the -4 index to the last element in the string.
     def print_statement(self):
@@ -47,13 +59,15 @@ class BankAccount:
         print(f"{self.full_name}\nAccount No.: {truncated_account_number}\nAccount Type: {(self.account_type).title()}\nBalance: ${self.balance_format}")
 
 
-parul_account = BankAccount('parul Bhardwaj', '45678912', 4000, "savings")
-ivan_account = BankAccount('ivan dubey', '56712311', 10000, "savings")
-danielle_account = BankAccount('Danielle Roxberry', '12369349', 100000, "Checking")
-mitchell_account = BankAccount('Mitchell hudson', '83141592', 1000, "savings")
+parul_account = BankAccount("parul Bhardwaj", "savings")
+ivan_account = BankAccount("ivan dubey", "savings")
+noah_account = BankAccount("Noah dubey", "Checking")
+mitchell_account = BankAccount("Mitchell hud", "savings")
 
-bank = [parul_account, ivan_account, danielle_account, mitchell_account]
+bank = [parul_account, ivan_account, noah_account, mitchell_account]
 
+
+# ---------------------------Bank list loop Add Interest--------------------------  
 # Looping through bank list to add_interest to each account
 # Decided to add account.print_statement to the method, can easily be removed and truned into new function if needed.
 def bank_add_interest(bank):
@@ -62,9 +76,10 @@ def bank_add_interest(bank):
         account.print_statement()
         print("")
 
+# ---------------------------Calling the functions--------------------------  
 # add_interest Loop for Bank list
 bank_add_interest(bank)
-
+print()
 parul_account.get_balance()
 parul_account.add_interest()
 parul_account.withdraw(4000.34)

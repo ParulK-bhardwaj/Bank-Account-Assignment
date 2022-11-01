@@ -1,6 +1,6 @@
 # Bank Account Assignment ACS-1111
 
-Using Object-Oriented Programming (OOP) concepts, created a class with different methods and attributes to simulate a bank account.
+Using Object-Oriented Programming (OOP) concepts in python, created a class with different methods and attributes to simulate a bank account.
 
 
 ## Description
