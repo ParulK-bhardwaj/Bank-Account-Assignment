@@ -3,7 +3,7 @@ class BankAccount:
         self.full_name = full_name.title()
         self.account_number = account_number
         self.balance = balance
-        self.account_type = account_type  
+        self.account_type = account_type 
 
     # "%.2f" to get two digits after 2 decimals. round function was only giving one zero after decimal for the amount that were whole number. 
     def deposit(self, amount):
@@ -50,7 +50,7 @@ class BankAccount:
 parul_account = BankAccount('parul Bhardwaj', '45678912', 4000, "savings")
 ivan_account = BankAccount('ivan dubey', '56712311', 10000, "savings")
 danielle_account = BankAccount('Danielle Roxberry', '12369349', 100000, "Checking")
-mitchell_account = BankAccount('Mitchell hudson', '03141592', 10, "savings")
+mitchell_account = BankAccount('Mitchell hudson', '83141592', 1000, "savings")
 
 bank = [parul_account, ivan_account, danielle_account, mitchell_account]
 
@@ -62,6 +62,8 @@ def bank_add_interest(bank):
         account.print_statement()
         print("")
 
+# add_interest Loop for Bank list
+bank_add_interest(bank)
 
 parul_account.get_balance()
 parul_account.add_interest()
@@ -78,6 +80,3 @@ mitchell_account.print_statement()
 print("\nMoney Withdrawn")
 mitchell_account.withdraw(150)
 mitchell_account.print_statement()
-
-# add_interest Loop for Bank list
-bank_add_interest(bank)
