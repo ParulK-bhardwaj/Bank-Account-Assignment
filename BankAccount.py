@@ -10,15 +10,15 @@ class BankAccount:
         # generate 8 digit account number through random - added functionality based on rubric
         self.account_number = str(random.randint(10000000, 99999999))
         self.balance = 0
-        self.account_type = account_type 
+        self.account_type = account_type
 
     # ---------------------------Deposit---------------------------
     # "%.2f" to get two digits after 2 decimals. round function was only giving one zero after decimal for the amount that were whole number. 
     def deposit(self, amount):
         self.balance = self.balance + amount
-        self.balance_format = "%.2f" % float(self.balance)
+        balance_format = "%.2f" % float(self.balance)
         amount = "%.2f" % float(amount)
-        print(f"Amount deposited: ${amount} New Balance: ${self.balance_format}")
+        print(f"Amount deposited: ${amount} New Balance: ${balance_format}")
 
      # ---------------------------Withdraw---------------------------   
     def withdraw(self, amount):
@@ -26,19 +26,19 @@ class BankAccount:
             print("Insufficient funds.")
             overdraft_fee = 10
             self.balance = self.balance - overdraft_fee
-            self.balance_format = "%.2f" % float(self.balance)
+            balance_format = "%.2f" % float(self.balance)
             overdraft_fee_format = "%.2f" % float(overdraft_fee)
-            print(f"Overdraft fee: ${overdraft_fee_format} New Balance: ${self.balance_format}")
+            print(f"Overdraft fee: ${overdraft_fee_format} New Balance: ${balance_format}")
         else:
             self.balance = self.balance - amount
-            self.balance_format = "%.2f" % float(self.balance)
+            balance_format = "%.2f" % float(self.balance)
             amount = "%.2f" % float(amount)
-            print(f"Amount withdrawn: ${amount} New Balance: ${self.balance_format}")
+            print(f"Amount withdrawn: ${amount} New Balance: ${balance_format}")
     
     # ---------------------------Get Balance---------------------------  
     def get_balance(self):
-        self.balance_format = "%.2f" % float(self.balance)
-        print(f"Your Account Balance is ${self.balance_format}")
+        balance_format = "%.2f" % float(self.balance)
+        print(f"Your Account Balance is ${balance_format}")
         return self.balance
 
     # ---------------------------Add interest--------------------------  
@@ -55,8 +55,8 @@ class BankAccount:
     # A string is a list in python so to call all the numbers from the last 4th element in the list. I called the -4 index to the last element in the string.
     def print_statement(self):
         truncated_account_number = "*" * (len(self.account_number)-4) + self.account_number[-4:]
-        self.balance_format = "%.2f" % float(self.balance)
-        print(f"{self.full_name}\nAccount No.: {truncated_account_number}\nAccount Type: {(self.account_type).title()}\nBalance: ${self.balance_format}")
+        balance_format = "%.2f" % float(self.balance)
+        print(f"{self.full_name}\nAccount No.: {truncated_account_number}\nAccount Type: {(self.account_type).title()}\nBalance: ${balance_format}")
 
 
 parul_account = BankAccount("parul Bhardwaj", "savings")
