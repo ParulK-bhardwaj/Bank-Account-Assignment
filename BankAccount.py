@@ -13,7 +13,7 @@ class BankAccount:
         self.account_type = account_type
 
     # ---------------------------Deposit---------------------------
-    # "%.2f" to get two digits after 2 decimals. round function was only giving one zero after decimal for the amount that were whole number. 
+    # "%.2f" to get two digits after decimal. round function was only giving one zero after decimal for the amount that were whole number. 
     def deposit(self, amount):
         self.balance = self.balance + amount
         balance_format = "%.2f" % float(self.balance)
@@ -69,7 +69,7 @@ bank = [parul_account, ivan_account, noah_account, mitchell_account]
 
 # ---------------------------Bank list loop Add Interest--------------------------  
 # Looping through bank list to add_interest to each account
-# Decided to add account.print_statement to the method, can easily be removed and truned into new function if needed.
+# Decided to add account.print_statement to the method, can easily be removed and turned into new function if needed.
 def bank_add_interest(bank):
     for account in bank:
         account.add_interest()
@@ -77,14 +77,11 @@ def bank_add_interest(bank):
         print("")
 
 # ---------------------------Calling the functions--------------------------  
-# add_interest Loop for Bank list
-bank_add_interest(bank)
-print()
 parul_account.get_balance()
-parul_account.add_interest()
 parul_account.withdraw(4000.34)
 parul_account.withdraw(400)
 parul_account.deposit(300)
+parul_account.add_interest()
 parul_account.print_statement()
 print("\nMoney Deposited")
 mitchell_account.deposit(400000)
@@ -95,3 +92,7 @@ mitchell_account.print_statement()
 print("\nMoney Withdrawn")
 mitchell_account.withdraw(150)
 mitchell_account.print_statement()
+
+# add_interest Loop for Bank list
+print()
+bank_add_interest(bank)
